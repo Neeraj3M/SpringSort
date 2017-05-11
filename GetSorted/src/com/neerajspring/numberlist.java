@@ -1,0 +1,84 @@
+package com.neerajspring;
+
+import java.io.Serializable;
+
+public class numberlist implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer Numlist;
+	private Integer SortedNumlist;
+	private Integer ChangeNo;
+	private Long TimeTaken;
+	
+	public void setNumlist(Integer num){
+		this.Numlist = num;
+	}
+	public void setSortedNumlist(Integer list){
+		this.SortedNumlist = list;
+	}
+	public void setChangeNo(Integer n){
+		this.ChangeNo = n;
+	}
+	public void setTimeTaken(Long l){
+		this.TimeTaken = l;
+	}
+	public Integer getNumlist(){
+		return this.Numlist;
+	}
+	public Integer getSortedNumlist(){
+		return SortedNumlist;}
+	public Integer getChangeNo(){
+		return ChangeNo;}
+	public Long getTimeTaken(){
+		return TimeTaken;}
+	
+	public void sortList(){
+		long startTime = System.currentTimeMillis();
+		Integer number = this.Numlist;
+		int sorted = 0;
+		int digits = 10;
+		int sortedDigits = 1;
+		int count = 0;
+		boolean first = true;
+
+		while (number > 0) {
+		    int digit = number % 10;
+		    
+
+		    if (!first) {
+
+		        int tmp = sorted;
+		        int toDivide = 1;
+		        for (int i = 0; i < sortedDigits; i++) {
+		            int tmpDigit = tmp % 10;
+		            if (digit >= tmpDigit) {
+		                sorted = sorted/toDivide*toDivide*10 + digit*toDivide + sorted % toDivide;
+		                count++;
+		                break;
+		            } else if (i == sortedDigits-1) {
+		                sorted = digit * digits + sorted;
+		            }
+		            tmp /= 10;
+		            toDivide *= 10;
+		        }
+		        digits *= 10;
+		        sortedDigits += 1;
+		    } else {
+		        sorted = digit;
+		    }
+
+		    first = false;
+		    number = number / 10;
+	       }
+		long endTime   = System.currentTimeMillis();
+		long totalTime = endTime - startTime;
+		this.setChangeNo(count);
+		this.setSortedNumlist(sorted);
+		this.setTimeTaken(totalTime);
+		
+         }
+	
+
+}

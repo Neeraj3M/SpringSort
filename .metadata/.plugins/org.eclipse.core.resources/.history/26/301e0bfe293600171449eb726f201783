@@ -1,0 +1,33 @@
+package com.neerajspring;
+
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+
+public class FileStore {
+	public void storeObject(numberlist num) throws IOException {
+            try(Writer writer = new OutputStreamWriter(new FileOutputStream("D:\\gitrepo\\SpringMVC\\Output.json") , "UTF-8")){
+                Gson gson = new GsonBuilder().create();
+                gson.toJson(num, writer);                 
+            }
+        }
+     
+    public numberlist displayObjects(){         
+    	 try(Reader reader = new InputStreamReader(JsonToJava.class.getResourceAsStream("/Server1.json"), "UTF-8")){
+             Gson gson = new GsonBuilder().create();
+             numberlist n = gson.fromJson(reader, Person.class);
+             System.out.println(p);
+         }
+     }
+ }
+
+}

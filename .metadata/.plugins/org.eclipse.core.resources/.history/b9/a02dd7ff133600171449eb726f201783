@@ -1,0 +1,25 @@
+package com.neerajspring;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.ModelMap;
+
+@Controller
+public class numberlistController {
+	@RequestMapping(value = "/NumberList", method=RequestMethod.GET)
+	public ModelAndView NumberList(){
+		return new ModelAndView("NumberList","command",new numberlist());
+	}
+	@RequestMapping(value= "/doSort",method=RequestMethod.POST)
+	public String doSort(@ModelAttribute("GetSorted")numberlist NumberList, ModelMap model){
+		NumberList.sortList();
+		model.addAttribute("Numlist",NumberList.getNumlist());
+		model.addAttribute("SortedNumlist",NumberList.GetSortedNumlist());
+		model.addAttribute("ChangeNo",NumberList.GetChangeNo());
+		return "numberlistSort";
+	}
+	
+}

@@ -1,0 +1,25 @@
+<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
+<html>
+   <head>
+      <title>Sort Numbers</title>
+   </head>
+
+   <body>
+      <h2>Sorted numbers</h2>
+      <table>
+         <tr>
+            <td>Number List</td>
+            <td>${Numlist}</td>
+         </tr>
+         <tr>
+            <td>Sorted Numbers</td>
+            <td>${SortedNumlist}</td>
+         </tr>
+         <tr>
+            <td>ID</td>
+            <td>${id}</td>
+         </tr>
+      </table>  
+   </body>
+   
+</html>

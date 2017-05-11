@@ -1,0 +1,38 @@
+<%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
+<html>
+   <head>
+      <title>Enter Number to be sorted</title>
+   </head>
+
+   <body>
+      <h2>Previous numbers</h2>
+      <form:form method = "POST" action = "/GetSorted/NumberList">
+
+      <table>
+         <tr>
+            <td>Number List</td>
+            <td>${Numlist}</td>
+         </tr>
+         <tr>
+            <td>Sorted Numbers</td>
+            <td>${SortedNumlist}</td>
+         </tr>
+         <tr>
+            <td>Number of Changes Required</td>
+            <td>${ChangeNo}</td>
+         </tr>
+         <tr>
+            <td>TimeTaken</td>
+            <td>${TimeTaken}</td>
+         </tr> 
+   
+            <tr>
+               <td colspan = "2">
+                  <input type = "submit" value = "Submit"/>
+               </td>
+            </tr>
+         </table>  
+      </form:form>
+   </body>
+   
+</html>

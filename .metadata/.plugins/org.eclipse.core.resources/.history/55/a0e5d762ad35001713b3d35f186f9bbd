@@ -1,0 +1,21 @@
+package com.neerajspring;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.ModelMap;
+
+@Controller
+public class numberlistController {
+	@RequestMapping(value = "/List", method=RequestMethod.GET)
+	public ModelAndView NumberList(){
+		return ModelAndView("numberlist","command",new numberlist());
+		}
+
+	private ModelAndView ModelAndView(String string, String string2,
+			com.neerajspring.numberlist numberlist) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}

@@ -1,0 +1,50 @@
+package com.neerajspring;
+
+public class numberlist {
+	private Integer[] Numlist;
+	private Integer[] SortedNumlist;
+	private Integer ChangeNo;
+	private Long TimeTaken;
+	
+	public void SetNumlist(Integer[] list){
+		this.Numlist = list;
+	}
+	public void SetSortedNumlist(Integer[] list){
+		this.SortedNumlist = list;
+	}
+	public void SetChangeNo(Integer n){
+		this.ChangeNo = n;
+	}
+	public void SetTimeTaken(Long l){
+		this.TimeTaken = l;
+	}
+	public Integer[] GetNumlist(){
+		return Numlist;
+	}
+	public Integer[] GetSortedNumlist(){
+		return SortedNumlist;}
+	public Integer GetChangeNo(){
+		return ChangeNo;}
+	public Long GetTimeTaken(){
+		return TimeTaken;}
+	public Integer[] sortList(){
+		Integer[] list = this.Numlist;
+		int len = SortedNumlist.length;
+		int count=0;
+		for(int i=0;i<len;i++)
+	    {
+	        for(int j=i+1;j<len;j++)
+	        {
+	             if(SortedNumlist[i] > SortedNumlist[j] ) 
+	             {
+	                 Integer temp = SortedNumlist[i];
+	                 SortedNumlist[i] = SortedNumlist[j];
+	                 SortedNumlist[j] = temp;
+					 count++;
+	             }
+	        }
+	    }
+		this.SetChangeNo(count);
+	    return this.SortedNumlist ;
+	}
+}

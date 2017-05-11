@@ -1,0 +1,34 @@
+package com.neerajspring;
+
+import java.util.Arrays;
+public class numberlist {
+	private Integer[] Numlist;
+	private Integer[] SortedNumlist;
+	private Integer ChangeNo;
+	private Long TimeTaken;
+	
+	public void SetNumlist(Integer[] list){
+		this.Numlist = list;
+	}
+	public void SetSortedNumlist(Integer[] list){
+		this.SortedNumlist = list;
+	}
+	public void SetChangeNo(Integer n){
+		this.ChangeNo = n;
+	}
+	public void SetTimeTaken(Long l){
+		this.TimeTaken = l;
+	}
+	public Integer[] GetNumlist(){
+		return Numlist;
+	}
+	public Integer[] GetSortedNumlist(){
+		return SortedNumlist;}
+	public Integer GetChangeNo(){
+		return ChangeNo;}
+	public Long GetTimeTaken(){
+		return TimeTaken;}
+	public Integer[] sortList(){
+		
+	}
+}
