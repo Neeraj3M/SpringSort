@@ -57,7 +57,7 @@ public final class numberlistSort_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\r\n");
       out.write("<html>\r\n");
       out.write("   <head>\r\n");
-      out.write("      <title>Sort Numbers</title>\r\n");
+      out.write("      <title>Get Sorted</title>\r\n");
       out.write("   </head>\r\n");
       out.write("\r\n");
       out.write("   <body>\r\n");
@@ -101,7 +101,7 @@ public final class numberlistSort_jsp extends org.apache.jasper.runtime.HttpJspB
         if (_jspx_eval_form_005fform_005f0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
           do {
             out.write("\r\n");
-            out.write("      <h2>Sorted numbers</h2>\r\n");
+            out.write("      <h2>Results</h2>\r\n");
             out.write("      <table>\r\n");
             out.write("         <tr>\r\n");
             out.write("            <td>Number List</td>\r\n");

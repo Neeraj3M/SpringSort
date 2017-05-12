@@ -1,0 +1,48 @@
+package com.neerajspring;
+
+import java.io.IOException;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.ModelMap;
+
+@Controller
+public class numberlistController {
+	@RequestMapping(value = "/NumberList", method=RequestMethod.GET)
+	public ModelAndView NumberList(){
+		return new ModelAndView("NumberList","command",new numberlist(0,0,0,0));
+	}
+	@RequestMapping(value = "/NumberListView", method=RequestMethod.GET)
+	public String ViewPrevious(@ModelAttribute("GetSorted")numberlist oldNumber, ModelMap model){
+		FileStore mof = new FileStore();
+		try {
+			oldNumber = mof.displayObjects();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("Numlist",oldNumber.getNumlist());
+		model.addAttribute("SortedNumlist",oldNumber.getSortedNumlist());
+		model.addAttribute("ChangeNo",oldNumber.getChangeNo());
+		model.addAttribute("TimeTaken", oldNumber.getTimeTaken());
+		return "NumberListView";
+	}
+	@RequestMapping(value= "/doSort",method=RequestMethod.POST)
+	public String doSort(@ModelAttribute("GetSorted")numberlist NumberList, ModelMap model) throws IOException{
+		NumberList.sortList();
+		model.addAttribute("Numlist",NumberList.getNumlist());
+		model.addAttribute("SortedNumlist",NumberList.getSortedNumlist());
+		model.addAttribute("ChangeNo",NumberList.getChangeNo());
+		model.addAttribute("TimeTaken", NumberList.getTimeTaken());
+		savetofile(NumberList);
+		return "numberlistSort";
+	}
+	public void savetofile(numberlist num) throws IOException{
+		FileStore mof = new FileStore();
+        mof.storeObject(num);
+	}
+	
+}

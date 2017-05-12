@@ -125,7 +125,7 @@ public final class NumberList_jsp extends org.apache.jasper.runtime.HttpJspBase
             out.write("            </tr>\r\n");
             out.write("            <tr>\r\n");
             out.write("               <td colspan = \"2\">\r\n");
-            out.write("                  <input type = \"submit\" value = \"Submit\"/>\r\n");
+            out.write("                  <input type = \"submit\" value = \"Sort\"/>\r\n");
             out.write("               </td>\r\n");
             out.write("            </tr>\r\n");
             out.write("         </table>  \r\n");
@@ -249,7 +249,7 @@ public final class NumberList_jsp extends org.apache.jasper.runtime.HttpJspBase
             out.write("\r\n");
             out.write("      <tr>\r\n");
             out.write("      <td colspan = \"2\">\r\n");
-            out.write("                  <input type = \"submit\" value = \"Back to View\"/>\r\n");
+            out.write("                  <input type = \"submit\" value = \"List Previous Sorts\"/>\r\n");
             out.write("               </td>\r\n");
             out.write("               </tr>\r\n");
             out.write("      ");

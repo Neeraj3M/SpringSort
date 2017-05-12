@@ -1,12 +1,12 @@
 <%@taglib uri = "http://www.springframework.org/tags/form" prefix = "form"%>
 <html>
    <head>
-      <title>Sort Numbers</title>
+      <title>Get Sorted</title>
    </head>
 
    <body>
    <form:form method = "GET" action = "/GetSorted/NumberList">
-      <h2>Sorted numbers</h2>
+      <h2>Results</h2>
       <table>
          <tr>
             <td>Number List</td>

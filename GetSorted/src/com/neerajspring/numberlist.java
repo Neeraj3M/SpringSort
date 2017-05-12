@@ -1,84 +1,68 @@
 package com.neerajspring;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class numberlist implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Integer Numlist;
-	private Integer SortedNumlist;
-	private Integer ChangeNo;
-	private Long TimeTaken;
-	
-	public void setNumlist(Integer num){
-		this.Numlist = num;
+	private String numlist;
+	private String sortedNumlist;
+	private Integer changeNo;
+	private Long timeTaken;
+
+	public void setNumlist(String num){
+		this.numlist = num;
 	}
-	public void setSortedNumlist(Integer list){
-		this.SortedNumlist = list;
+	public void setSortedNumlist(String list){
+		this.sortedNumlist = list;
 	}
 	public void setChangeNo(Integer n){
-		this.ChangeNo = n;
+		this.changeNo = n;
 	}
 	public void setTimeTaken(Long l){
-		this.TimeTaken = l;
+		this.timeTaken = l;
 	}
-	public Integer getNumlist(){
-		return this.Numlist;
+	public String getNumlist(){
+		return numlist;
 	}
-	public Integer getSortedNumlist(){
-		return SortedNumlist;}
+	public String getSortedNumlist(){
+		return sortedNumlist;}
 	public Integer getChangeNo(){
-		return ChangeNo;}
+		return changeNo;}
 	public Long getTimeTaken(){
-		return TimeTaken;}
+		return timeTaken;}
 	
 	public void sortList(){
-		long startTime = System.currentTimeMillis();
-		Integer number = this.Numlist;
-		int sorted = 0;
-		int digits = 10;
-		int sortedDigits = 1;
-		int count = 0;
-		boolean first = true;
+		long startTime = System.nanoTime();
+		//long startTime = System.currentTimeMillis();
+		String[] numbers = this.numlist.split(",");
+		String[] sortnumber = numbers.clone();
+		Arrays.sort(sortnumber);
+		String sorted = Arrays.toString(sortnumber);
+		System.out.println(this.sortedNumlist);
+		int swaps = 0;
+		int b = 1;
+		for (int a = 1;a<numbers.length;a++){
+			if (numbers[a] == sortnumber[b])
+			  b = b + 1;
+		    else
+			  swaps = swaps + 1;
+			}
 
-		while (number > 0) {
-		    int digit = number % 10;
-		    
-
-		    if (!first) {
-
-		        int tmp = sorted;
-		        int toDivide = 1;
-		        for (int i = 0; i < sortedDigits; i++) {
-		            int tmpDigit = tmp % 10;
-		            if (digit >= tmpDigit) {
-		                sorted = sorted/toDivide*toDivide*10 + digit*toDivide + sorted % toDivide;
-		                count++;
-		                break;
-		            } else if (i == sortedDigits-1) {
-		                sorted = digit * digits + sorted;
-		            }
-		            tmp /= 10;
-		            toDivide *= 10;
-		        }
-		        digits *= 10;
-		        sortedDigits += 1;
-		    } else {
-		        sorted = digit;
-		    }
-
-		    first = false;
-		    number = number / 10;
-	       }
-		long endTime   = System.currentTimeMillis();
-		long totalTime = endTime - startTime;
-		this.setChangeNo(count);
+		long endTime = System.nanoTime();
+		this.setChangeNo(swaps);
 		this.setSortedNumlist(sorted);
-		this.setTimeTaken(totalTime);
+		this.setTimeTaken(endTime-startTime);
 		
          }
-	
+    @Override
+    public String toString() {
+        return "numberlist [Numlist=" + numlist + ", SortedNumlist=" + sortedNumlist
+                + ", ChangeNo=" + changeNo + ", TimeTaken=" + timeTaken +  "]";
+    }
+
 
 }

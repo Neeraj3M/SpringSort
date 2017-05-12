@@ -1,0 +1,86 @@
+package com.neerajspring;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+
+public class FileStore {
+    private static final String COMMA_DELIMITER = ",";
+    private static final String NEW_LINE_SEPARATOR = "\n";
+    private static final String FILE_HEADER = "Numlist,SortedNumlist,ChangeNo,TimeTaken";
+
+	public void storeObject(numberlist num) throws IOException {
+            try(Writer writer = new OutputStreamWriter(new FileOutputStream("D:\\gitrepo\\SpringMVC\\Output.json") , "UTF-8")){
+                Gson gson = new GsonBuilder().create();
+                gson.toJson(num, writer);                 
+            }
+        }
+     
+    public numberlist displayObjects()throws IOException{         
+    	 try(Reader reader = new InputStreamReader(new FileInputStream("D:\\gitrepo\\SpringMVC\\Output.json"), "UTF-8")){
+             Gson gson = new GsonBuilder().create();
+             numberlist n = gson.fromJson(reader, numberlist.class);
+             System.out.println(n.toString());
+             return n;
+         }
+     }
+   
+    public void storeCSV(numberlist num) throws IOException{
+    	 FileWriter fileWriter = null;    	                  
+    	         try {
+    	 
+    	             fileWriter = new FileWriter("D:\\gitrepo\\SpringMVC\\Output.csv");
+    	             //Write the CSV file header
+    	             fileWriter.append(FILE_HEADER.toString());
+    	 
+    	              
+    	 
+    	             //Add a new line separator after the header
+    	 
+    	             fileWriter.append(NEW_LINE_SEPARATOR);
+    	 
+    	              
+    	 
+    	             //Write a new student object list to the CSV file
+    	 
+    	             for (Student student : students) {
+    	                 fileWriter.append(String.valueOf(student.getId()));
+    	                 fileWriter.append(COMMA_DELIMITER);
+    	                 fileWriter.append(student.getFirstName());
+    	                 fileWriter.append(COMMA_DELIMITER);
+    	                 fileWriter.append(student.getLastName());
+    	                 fileWriter.append(COMMA_DELIMITER);
+    	                 fileWriter.append(student.getGender());
+    	                 fileWriter.append(COMMA_DELIMITER);
+    	                 fileWriter.append(String.valueOf(student.getAge()));
+    	                 fileWriter.append(NEW_LINE_SEPARATOR);
+    	             }
+    	             System.out.println("CSV file was created successfully !!!");
+    	         } catch (Exception e) {
+    	             System.out.println("Error in CsvFileWriter !!!");
+    	             e.printStackTrace();
+    	         } finally {
+    	             try {
+    	                 fileWriter.flush();
+    	                 fileWriter.close();
+    	             } catch (IOException e) {
+    	                 System.out.println("Error while flushing/closing fileWriter !!!");
+    	                 e.printStackTrace();
+    	            
+    	
+    }
+ }
+    }}
+

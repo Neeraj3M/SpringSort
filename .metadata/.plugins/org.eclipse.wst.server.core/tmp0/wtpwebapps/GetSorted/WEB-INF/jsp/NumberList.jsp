@@ -14,7 +14,7 @@
             </tr>
             <tr>
                <td colspan = "2">
-                  <input type = "submit" value = "Submit"/>
+                  <input type = "submit" value = "Sort"/>
                </td>
             </tr>
          </table>  
@@ -22,7 +22,7 @@
       <form:form method = "GET" action = "/GetSorted/NumberListView">
       <tr>
       <td colspan = "2">
-                  <input type = "submit" value = "Back to View"/>
+                  <input type = "submit" value = "List Previous Sorts"/>
                </td>
                </tr>
       </form:form>
