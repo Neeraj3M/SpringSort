@@ -86,7 +86,7 @@ public class FileStore {
     	    int TimeTaken_IDX = 3;
     		BufferedReader fileReader = null;
     		        try {
-    		            
+    		            //Create a new list of student to be filled by CSV file data
     		            List<numberlist> NumList = new ArrayList<numberlist>();
     		            String line = "";
     		            //Create the file reader
@@ -98,7 +98,7 @@ public class FileStore {
     		                //Get all tokens available in line
     		                String[] tokens = line.split(TAB_DELIMITER);
     		                if (tokens.length > 0) {
-    	
+    		                    //Create a new student object and fill his  data
     		                    numberlist n = new numberlist();
     		                    n.setChangeNo(Integer.parseInt(tokens[CheckNo_IDX]));
     		                    System.out.println(Integer.parseInt(tokens[CheckNo_IDX]));
@@ -109,7 +109,7 @@ public class FileStore {
     		                    NumList.add(n);
     		                }
     		            }
-    		  
+    		            //Print the new student list
     		            return NumList;
     		        }
     		        catch (Exception e) {

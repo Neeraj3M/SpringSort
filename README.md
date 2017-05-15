@@ -31,7 +31,7 @@ download GetSorted.war from Github
 upload .war file to webapps folder/directory in Tomcat server
 
 start server from command shell--
-./apache-tomcat-6.0.53/bin/startup.sh
+./apache-tomcat-6.0.53/bin/startup.bat
 
 open the browser at http://localhost:8080/GetSorted/NumberList
 
