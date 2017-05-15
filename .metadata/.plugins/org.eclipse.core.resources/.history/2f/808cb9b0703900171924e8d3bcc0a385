@@ -25,7 +25,7 @@ public class FileStore {
     private static final String FILE_HEADER = "Numlist,SortedNumlist,ChangeNo,TimeTaken";
 
 	public void storeObject(numberlist num) throws IOException {
-            try(Writer writer = new OutputStreamWriter(new FileOutputStream("Output.json") , "UTF-8")){
+            try(Writer writer = new OutputStreamWriter(new FileOutputStream("D:\\gitrepo\\SpringMVC\\Output.json") , "UTF-8")){
                 Gson gson = new GsonBuilder().create();
                 gson.toJson(num, writer);                 
             }
